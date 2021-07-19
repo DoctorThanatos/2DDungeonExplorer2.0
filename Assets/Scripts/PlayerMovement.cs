@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
 	private Rigidbody2D myRigidbody;
 	private Vector3 change;
 
+  private Animator animator; 
+
     // Start is called before the first frame update
     void Start()
     {
+      animator = GetComponent<Animator>();
       myRigidbody = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -22,13 +24,28 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        if(change != Vector3.zero)
-        {
-          MoveCharacter();
-        }
-
+        UpdateAnimationandMove();
     }
 
+
+    //Method to Call Walk Animations
+    void UpdateAnimationandMove()
+    {
+      if(change != Vector3.zero)
+        {
+          MoveCharacter();
+          animator.SetFloat("moveX", change.x);
+          animator.SetFloat("moveY", change.y);
+          animator.SetBool("moving", true);
+        }
+        else
+        {
+          animator.SetBool("moving", false);
+        }
+    }
+
+
+    //Method to Determine Speed of Player
     void MoveCharacter()
     {
       myRigidbody.MovePosition(
