@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class RoomMove : MonoBehaviour
 {
-    public Vector2 cameraChangemax;
-    public Vector2 cameraChangemin;
+    public Vector2 cameraChange;
+    //public Vector2 cameraChangemax; Used for Different Sized Rooms
+    //public Vector2 cameraChangemin; User for Different Sized Rooms
     public Vector3 playerChange;
     private CameraMovement cam;
 
@@ -25,8 +26,8 @@ public class RoomMove : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            cam.minPosition += cameraChangemin;
-            cam.maxPosition += cameraChangemax;
+            cam.minPosition += cameraChange;
+            cam.maxPosition += cameraChange;
             other.transform.position += playerChange;
 
         }
