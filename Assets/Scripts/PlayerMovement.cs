@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState{
+
+//Enum, like bool, can only be true or falase. Will only have 1 active
+public enum PlayerState
+{
   walk,
   attack,
-  interact
+  interact,
+  death
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -23,6 +27,8 @@ public PlayerState currentState;
     {
       animator = GetComponent<Animator>();
       myRigidbody = GetComponent<Rigidbody2D>();
+      animator.SetFloat("moveX", 0);
+      animator.SetFloat("moveY", -1);
     }
 
     // Update is called once per frame
@@ -73,6 +79,7 @@ public PlayerState currentState;
     //Method to Determine Speed of Player
     void MoveCharacter()
     {
+      change.Normalize();
       myRigidbody.MovePosition(
         transform.position + change.normalized * speed * Time.fixedDeltaTime);
 
