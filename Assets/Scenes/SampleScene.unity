@@ -15893,7 +15893,7 @@ GameObject:
   - component: {fileID: 118111737}
   m_Layer: 0
   m_Name: log_enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32880,8 +32880,9 @@ GameObject:
   - component: {fileID: 1748163693}
   - component: {fileID: 1748163692}
   - component: {fileID: 1748163696}
-  - component: {fileID: 1748163695}
   - component: {fileID: 1748163697}
+  - component: {fileID: 1748163695}
+  - component: {fileID: 1748163698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33039,6 +33040,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1748163698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748163691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb44652f13dd2d64e97ee03b26c87ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 3
 --- !u!1 &1755479124
 GameObject:
   m_ObjectHideFlags: 0
