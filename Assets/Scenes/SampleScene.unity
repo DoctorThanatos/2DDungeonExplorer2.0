@@ -16018,7 +16018,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118111731}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -16028,7 +16028,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &118111737
@@ -16049,7 +16049,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   target: {fileID: 0}
   chaseRadius: 4
-  attackRadius: 1
+  attackRadius: 1.2
   homePosition: {fileID: 0}
 --- !u!1 &131137601
 GameObject:
@@ -33052,7 +33052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb44652f13dd2d64e97ee03b26c87ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 3
+  thrust: 5
 --- !u!1 &1755479124
 GameObject:
   m_ObjectHideFlags: 0

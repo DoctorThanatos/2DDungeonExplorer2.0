@@ -10,10 +10,12 @@ public class LogAI : EnemyAI
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
+    private Rigidbody2D myRigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
+        myRigidBody = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         
     }
@@ -30,8 +32,10 @@ public class LogAI : EnemyAI
         if(Vector2.Distance(target.position, transform.position) <=chaseRadius
                             && Vector2.Distance(target.position, transform.position) > attackRadius)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             //Attack Radius as last variable for funnies
+
+            myRigidBody.MovePosition(temp);
 
         }
 
