@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
-{
 
+public enum EnemyState
+{
+    idle,
+    walk, 
+    attack,
+    stagger
+
+}
+public class EnemyInheritance : MonoBehaviour
+{
+    public EnemyState currentState;
     public int health;
     public string enemyName;
     public int baseAttack;

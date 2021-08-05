@@ -25,6 +25,7 @@ public class Knockback : MonoBehaviour
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             if(enemy != null)
             {
+                enemy.GetComponent<EnemyInheritance>().currentState = EnemyState.stagger;
                 StartCoroutine(KnockCoroutine(enemy));
             }
         }
@@ -36,6 +37,7 @@ public class Knockback : MonoBehaviour
 
             enemy.velocity = force;
             yield return new WaitForSeconds(.3f);
+            enemy.GetComponent<EnemyInheritance>().currentState =EnemyState.idle;
 
             enemy.velocity = new Vector2();
         }
