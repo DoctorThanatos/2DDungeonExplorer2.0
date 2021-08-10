@@ -9,6 +9,8 @@ public enum PlayerState
   walk,
   attack,
   interact,
+  stagger,
+  idle,
   death
 }
 
@@ -38,12 +40,13 @@ public PlayerState currentState;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        if(Input.GetButtonDown("attack") && currentState != PlayerState.attack
+            && currentState != PlayerState.stagger)
         {
           StartCoroutine(AttackCo());
         }
         //Won't Run unless ^^^ runs
-        else if(currentState == PlayerState.walk)
+        else if(currentState == PlayerState.walk || currentState == PlayerState.stagger)
         {
         UpdateAnimationandMove();
         }
@@ -84,4 +87,18 @@ public PlayerState currentState;
         transform.position + change.normalized * speed * Time.fixedDeltaTime);
 
     }
+    public void Knock(float knockTime)
+    {
+      StartCoroutine(KnockCoroutine(knockTime));
+    }
+     private IEnumerator KnockCoroutine(float knockTime)
+        {
+            if(myRigidbody != null)
+            {
+                yield return new WaitForSeconds(knockTime);
+                myRigidbody.velocity = Vector2.zero;
+                currentState = PlayerState.idle;
+                myRigidbody.velocity = Vector2.zero;
+            }
+        }
 }

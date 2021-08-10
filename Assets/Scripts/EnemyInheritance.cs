@@ -18,15 +18,30 @@ public class EnemyInheritance : MonoBehaviour
     public string enemyName;
     public int baseAttack;
     public float moveSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
+   public void Knock(Rigidbody2D myRigidBody, float knockTime)
+   {
+       StartCoroutine(KnockCoroutine(myRigidBody, knockTime));
+   }
+   
+   private IEnumerator KnockCoroutine(Rigidbody2D myRigidbody, float knockTime)
+        {
+            if(myRigidbody != null)
+            {
+                yield return new WaitForSeconds(knockTime);
+                myRigidbody.velocity = Vector2.zero;
+                currentState = EnemyState.idle;
+                myRigidbody.velocity = Vector2.zero;
+            }
+            
+            //Solution to Issue From Comments
+            //Vector2 forceDirection = hit.transform.position - transform.position;
+            //Vector2 force = forceDirection.normalized * thrust;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+            //hit.velocity = force;
+            //yield return new WaitForSeconds(.3f);
+            //hit.GetComponent<EnemyInheritance>().currentState =EnemyState.idle;
+
+            //hit.velocity = new Vector2();
+        }
 }
